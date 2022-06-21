@@ -24,6 +24,10 @@ public class StudentList {
 		}
 	}
 	public static void main(String[] args) {
+		if (args.length != 1) {
+			System.out.println(Constant.Invalid);
+			System.exit(1);
+		}
 //		Check arguments
 		if (args[0].equals(Constant.namePrint)) {
 			System.out.println(Constant.loadingData);
@@ -93,6 +97,8 @@ public class StudentList {
 		System.out.println(count + Constant.wordsFound);
 
 		System.out.println(Constant.dataLoaded);
+		} else {
+			System.out.println(Constant.Invalid);
 		}
 	}
 }
