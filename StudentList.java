@@ -7,18 +7,18 @@ public class StudentList {
 	public static String nameList;
 	public static void read(){
 		try{
-			bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.FileName)));
-			nameList = bufferReader.readLine();
+		       bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.FileName)));
+		       nameList = bufferReader.readLine();
 		}catch (Exception e){
 
 		}
 	}
 	public static void write(String updateText){
 		try{
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Constant.FileName, false));
-			bufferedWriter.flush();
-			bufferedWriter.write(updateText);
-			bufferedWriter.close();
+		       BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Constant.FileName, false));
+		       bufferedWriter.flush();
+		       bufferedWriter.write(updateText);
+		       bufferedWriter.close();
 		}catch (Exception e){
 
 		}
@@ -56,13 +56,12 @@ public class StudentList {
 			String dateString = Constant.dateFormat;
 			DateFormat dateFormat = new SimpleDateFormat(dateString);
 			String formatDate = dateFormat.format(date);
-            String textUpdate = nameList + Constant.comma + newString + Constant.lastUpdate + formatDate;
+                        String textUpdate = nameList + Constant.comma + newString + Constant.lastUpdate + formatDate;
 			write(textUpdate);
 
 			System.out.println(Constant.dataLoaded);
 		} else if (args[0].contains(Constant.query)) {
 			System.out.println(Constant.loadingData);
-
 			String name[] = nameList.split(Constant.comma);
 			boolean done = false;
 			String word = args[0].substring(1);
@@ -76,27 +75,26 @@ public class StudentList {
 				System.out.println(Constant.notFound);
 			}
 
-		System.out.println(Constant.dataLoaded);
+		        System.out.println(Constant.dataLoaded);
 		} else if (args[0].contains(Constant.countWords)) {
-		System.out.println(Constant.loadingData);
-		read();
-		char name[] = nameList.toCharArray();
-		boolean in_word = false;
-		int count = 0;
-		for (char c : name) {
-			if (c == ',') {
-				if (!in_word) {
-					count++;
-					//in_word = true;
-				} else {
-					in_word = false;
+			System.out.println(Constant.loadingData);
+			read();
+			char name[] = nameList.toCharArray();
+			boolean in_word = false;
+			int count = 0;
+			for (char c : name) {
+				if (c == ',') {
+					if (!in_word) {
+						count++;
+						//in_word = true;
+					} else {
+						in_word = false;
+					}
 				}
-			}
-		}
-		if(count>1)count++;
-		System.out.println(count + Constant.wordsFound);
-
-		System.out.println(Constant.dataLoaded);
+		        }
+		        if(count>1)count++;
+		        System.out.println(count + Constant.wordsFound);
+		        System.out.println(Constant.dataLoaded);
 		} else {
 			System.out.println(Constant.Invalid);
 		}
