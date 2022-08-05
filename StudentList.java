@@ -52,7 +52,7 @@ public class StudentList {
 
 			Date date = new Date();
 			DateFormat dateFormat = new SimpleDateFormat(Constant.dateFormat);
-            String textUpdate = nameList + Constant.comma + newString + Constant.lastUpdate + dateFormat.format(date);
+			String textUpdate = nameList + Constant.comma + newString + Constant.lastUpdate + dateFormat.format(date);
 			write(textUpdate);
 
 			System.out.println(Constant.dataLoaded);
