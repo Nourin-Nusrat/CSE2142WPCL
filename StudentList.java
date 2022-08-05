@@ -42,61 +42,39 @@ public class StudentList {
 			read();
 			String names[] = nameList.split(Constant.comma);
 			Random randomNumber = new Random();
-			int random = randomNumber.nextInt(names.length);
-			System.out.println(names[random]);
+			System.out.println(names[randomNumber.nextInt(names.length)]);
 			System.out.println(Constant.dataLoaded);
 		} else if (args[0].contains(Constant.addName)) {
 			System.out.println(Constant.loadingData);
 
 			read();
-			//bufferedReader.close();
 			String newString = args[0].substring(1);
 
 			Date date = new Date();
-			String dateString = Constant.dateFormat;
-			DateFormat dateFormat = new SimpleDateFormat(dateString);
-			String formatDate = dateFormat.format(date);
-            String textUpdate = nameList + Constant.comma + newString + Constant.lastUpdate + formatDate;
+			DateFormat dateFormat = new SimpleDateFormat(Constant.dateFormat);
+            String textUpdate = nameList + Constant.comma + newString + Constant.lastUpdate + dateFormat.format(date);
 			write(textUpdate);
 
 			System.out.println(Constant.dataLoaded);
 		} else if (args[0].contains(Constant.query)) {
 			System.out.println(Constant.loadingData);
-
+			read();
 			String name[] = nameList.split(Constant.comma);
-			boolean done = false;
 			String word = args[0].substring(1);
-			for (int index = 0; index < name.length && (!done); index++) {
+			for (int index = 0; index < name.length ; index++) {
 				if (name[index].equals(word)) {
 					System.out.println(Constant.found);
-					done = true;
+					break;
 				}
 			}
-			if (!done) {
-				System.out.println(Constant.notFound);
-			}
-
-		System.out.println(Constant.dataLoaded);
+			System.out.println(Constant.dataLoaded);
 		} else if (args[0].contains(Constant.countWords)) {
-		System.out.println(Constant.loadingData);
-		read();
-		char name[] = nameList.toCharArray();
-		boolean in_word = false;
-		int count = 0;
-		for (char c : name) {
-			if (c == ',') {
-				if (!in_word) {
-					count++;
-					//in_word = true;
-				} else {
-					in_word = false;
-				}
-			}
-		}
-		if(count>1)count++;
-		System.out.println(count + Constant.wordsFound);
+			System.out.println(Constant.loadingData);
+			read();
+			String names[] = nameList.split(Constant.comma);
+			System.out.println(names.length + Constant.wordsFound);
 
-		System.out.println(Constant.dataLoaded);
+			System.out.println(Constant.dataLoaded);
 		} else {
 			System.out.println(Constant.Invalid);
 		}
