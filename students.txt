@@ -1,2 +1,2 @@
-Student1, Student2, Student3, Student4, Student5, Another, Another, new
+Student1, Student2, Student3, Student4, Student5, Another, Another
 List last updated on 05/24/2022-08:24:34 PM
