@@ -24,11 +24,11 @@ public class StudentList {
 		}
 	}
 	public static void main(String[] args) {
+	//		Check arguments
 		if (args.length != 1) {
 			System.out.println(Constant.Invalid);
 			System.exit(1);
 		}
-//		Check arguments
 		if (args[0].equals(Constant.namePrint)) {
 			System.out.println(Constant.loadingData);
 			read();
@@ -59,10 +59,10 @@ public class StudentList {
 		} else if (args[0].contains(Constant.query)) {
 			System.out.println(Constant.loadingData);
 			read();
-			String name[] = nameList.split(Constant.comma);
+			String names[] = nameList.split(Constant.comma);
 			String word = args[0].substring(1);
-			for (int index = 0; index < name.length ; index++) {
-				if (name[index].equals(word)) {
+			for (int index = 0; index < names.length ; index++) {
+				if (names[index].equals(word)) {
 					System.out.println(Constant.found);
 					break;
 				}
