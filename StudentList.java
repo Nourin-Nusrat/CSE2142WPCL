@@ -5,6 +5,7 @@ import java.util.*;
 public class StudentList {
 	public static BufferedReader bufferReader;
 	public static String nameList;
+	// read the file
 	public static void read(){
 		try{
 			bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.FileName)));
@@ -13,6 +14,7 @@ public class StudentList {
 
 		}
 	}
+	// write to the file
 	public static void write(String updateText){
 		try{
 			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Constant.FileName, false));
@@ -29,6 +31,7 @@ public class StudentList {
 			System.out.println(Constant.Invalid);
 			System.exit(1);
 		}
+	//	Display all the names in student.txt
 		if (args[0].equals(Constant.namePrint)) {
 			System.out.println(Constant.loadingData);
 			read();
@@ -37,14 +40,18 @@ public class StudentList {
 				System.out.println(word);
 			}
 			System.out.println(Constant.dataLoaded);
-		} else if (args[0].equals(Constant.randomName)) {
+		}
+	//	display a word randomly from student.txt
+		else if (args[0].equals(Constant.randomName)) {
 			System.out.println(Constant.loadingData);
 			read();
 			String names[] = nameList.split(Constant.comma);
 			Random randomNumber = new Random();
 			System.out.println(names[randomNumber.nextInt(names.length)]);
 			System.out.println(Constant.dataLoaded);
-		} else if (args[0].contains(Constant.addName)) {
+		}
+	//	Add word and update time.
+		else if (args[0].contains(Constant.addName)) {
 			System.out.println(Constant.loadingData);
 
 			read();
@@ -56,7 +63,9 @@ public class StudentList {
 			write(textUpdate);
 
 			System.out.println(Constant.dataLoaded);
-		} else if (args[0].contains(Constant.query)) {
+		}
+	//	Check whether a word exits in the student.txt or not
+		else if (args[0].contains(Constant.query)) {
 			System.out.println(Constant.loadingData);
 			read();
 			String names[] = nameList.split(Constant.comma);
@@ -68,14 +77,18 @@ public class StudentList {
 				}
 			}
 			System.out.println(Constant.dataLoaded);
-		} else if (args[0].contains(Constant.countWords)) {
+		}
+	//	count total number of words
+		else if (args[0].contains(Constant.countWords)) {
 			System.out.println(Constant.loadingData);
 			read();
 			String names[] = nameList.split(Constant.comma);
 			System.out.println(names.length + Constant.wordsFound);
 
 			System.out.println(Constant.dataLoaded);
-		} else {
+		}
+	//	case when user enters invalid arguments
+		else {
 			System.out.println(Constant.Invalid);
 		}
 	}
